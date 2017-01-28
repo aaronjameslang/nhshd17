@@ -12,6 +12,21 @@ class Counter extends Component {
     counter: number
   };
 
+  constructor(props) {
+    super(props)
+    this.state = {text: 'apple'}
+  }
+
+  handleChange(event) {
+    this.setState({text: event.target.value});
+  }
+
+  reverse() {
+    const {ipcRenderer} = require('electron')
+    const text = ipcRenderer.sendSync('reverse', this.state.text)
+    this.setState({text: text})
+  }
+
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
     return (
@@ -34,6 +49,10 @@ class Counter extends Component {
           <button className={styles.btn} onClick={incrementIfOdd}>odd</button>
           <button className={styles.btn} onClick={() => incrementAsync()}>async</button>
         </div>
+        <form>
+          <input type="text" value={this.state.text} onChange={this.handleChange.bind(this)}/>
+          <button onClick={() => this.reverse()}>Reverse</button>
+        </form>
       </div>
     );
   }

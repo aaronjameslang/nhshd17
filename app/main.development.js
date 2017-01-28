@@ -275,3 +275,8 @@ app.on('ready', async () => {
     mainWindow.setMenu(menu);
   }
 });
+
+const {ipcMain} = require('electron')
+ipcMain.on('reverse', (event, arg) => {
+  event.returnValue = arg.split('').reverse().join('')
+})
