@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styles from './Counter.css';
+import {ipcRenderer} from 'electron';
 
 class Counter extends Component {
   props: {
@@ -14,17 +15,24 @@ class Counter extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {text: 'apple'}
+    this.state = {
+      filepath: '/home/aaron/nhshd17/data',
+      record: 'Enter patient record here',
+      records: ''
+    }
+    ipcRenderer.on('all-records', (event, records) => {
+      this.setState({records: records})
+    })
   }
 
-  handleChange(event) {
-    this.setState({text: event.target.value});
+  handleChange(name, event) {
+    const state = {}
+    state[name] = event.target.value
+    this.setState(state);
   }
 
-  reverse() {
-    const {ipcRenderer} = require('electron')
-    const text = ipcRenderer.sendSync('reverse', this.state.text)
-    this.setState({text: text})
+  createRecord() {
+    ipcRenderer.send('create-record', this.state.filepath, this.state.record)
   }
 
   render() {
@@ -50,8 +58,10 @@ class Counter extends Component {
           <button className={styles.btn} onClick={() => incrementAsync()}>async</button>
         </div>
         <form>
-          <input type="text" value={this.state.text} onChange={this.handleChange.bind(this)}/>
-          <button onClick={() => this.reverse()}>Reverse</button>
+          <textarea value={this.state.records}/><br/>
+          <input type="text" value={this.state.filepath} onChange={this.handleChange.bind(this, 'filepath')}/><br/>
+          <input type="text" value={this.state.record}   onChange={this.handleChange.bind(this, 'record'  )}/><br/>
+          <button onClick={() => this.createRecord()}>Create Record</button><br/>
         </form>
       </div>
     );

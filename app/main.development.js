@@ -1,4 +1,5 @@
-import { app, BrowserWindow, Menu, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, shell } from 'electron';
+import fs from 'fs';
 
 let menu;
 let template;
@@ -276,7 +277,18 @@ app.on('ready', async () => {
   }
 });
 
-const {ipcMain} = require('electron')
-ipcMain.on('reverse', (event, arg) => {
-  event.returnValue = arg.split('').reverse().join('')
+ipcMain.on('create-record', (event, filepath, string) => {
+  fs.appendFile(filepath, string, err => {
+    if (err) {
+      event.sender.send('error', err)
+      return
+    }
+    fs.readFile(filepath, (err, records) => {
+      if (err) {
+        event.sender.send('error', err)
+        return
+      }
+      event.sender.send('all-records', records)
+    })
+  });
 })
