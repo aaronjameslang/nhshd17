@@ -1,5 +1,8 @@
 // @flow
 import React, { Component } from 'react';
+import Navbar from '../components/Navbar';
+import NavTabs from '../components/NavTabs';
+import FooterNav from '../components/FooterNav';
 
 export default class App extends Component {
   props: {
@@ -9,7 +12,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        <Navbar />
+        <NavTabs />
+        <div>
+          {this.props.children}
+        </div>
+        <FooterNav />
       </div>
     );
   }

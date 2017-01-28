@@ -1,15 +1,15 @@
 // @flow
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
-import CounterPage from './containers/CounterPage';
+import PatientPage from './containers/PatientPage';
 
 
 export default (
-  <Route path="/" component={App}>
+  <Route path="/" component={App} history={hashHistory}>
     <IndexRoute component={HomePage} />
     <Route path="/login" component={HomePage} />
-    <Route path="/patient" component={CounterPage} />
+    <Route path="/patient" component={PatientPage} />
   </Route>
 );
