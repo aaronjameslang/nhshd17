@@ -10,7 +10,7 @@ const style = {
   margin: 12,
 }
 
-export default class Home extends Component {
+export default class Patient extends Component {
   handleClick() {
     hashHistory.push(`/patient`)
   }
@@ -19,6 +19,27 @@ export default class Home extends Component {
     return (
       <div>
         <Paper style={{padding: '20px'}} zDepth={1}>
+          <TextField
+            hintText="NHS Number"
+          /><br />
+          <TextField
+            hintText="First Name"
+          /><br />
+          <TextField
+            hintText="Second Name"
+          /><br />
+          <TextField
+            hintText="Address..."
+            multiLine={true}
+            rows={2}
+            rowsMax={4}
+          /><br />
+          <TextField
+            hintText="Postcode"
+          /><br />
+          <TextField
+            hintText="Date Of Birth (YYYY-MM-DD)"
+          /><br />
           <RaisedButton label="Save Patient" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
         </Paper>
       </div>
