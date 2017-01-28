@@ -9,6 +9,7 @@ import CounterPage from './containers/CounterPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="/counter" component={CounterPage} />
+    <Route path="/login" component={HomePage} />
+    <Route path="/patient" component={CounterPage} />
   </Route>
 );

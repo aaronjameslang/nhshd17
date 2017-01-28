@@ -1,4 +1,5 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
@@ -11,8 +12,10 @@ const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
-  </Provider>,
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <Router history={history} routes={routes} />
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
