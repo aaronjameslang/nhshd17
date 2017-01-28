@@ -16,7 +16,7 @@ class Counter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      filepath: '/home/aaron/nhshd17/data',
+      filepath: '/tmp/followapp',
       record: 'Enter patient record here',
       records: ''
     }
