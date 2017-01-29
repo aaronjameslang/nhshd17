@@ -16,6 +16,7 @@ export default class Navbar extends Component {
       <AppBar
         title="FollowApp"
         iconElementLeft={ <LoggedInMenu /> }
+        titleStyle={{'fontSize': '40px', 'textAlign': 'center'}}
       />
     );
   }
