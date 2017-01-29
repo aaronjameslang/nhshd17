@@ -8,6 +8,7 @@ import Slider from 'material-ui/Slider';
 import Toggle from 'material-ui/Toggle';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import styles from './Home.css';
+import { ipcRenderer } from 'electron';
 
 const paperStyle = {
   paddingLeft: '100px',
@@ -23,8 +24,25 @@ const contentStyle = {
 }
 
 export default class FollowUp extends Component {
+  constructor() {
+    super();
+    this.state = {}
+  }
+
+  handleChange(name, event) {
+    const state = this.state
+    state[name] = event.target.value
+    this.setState(state)
+  }
+
   handleClick() {
-    hashHistory.push(`/patient`)
+    const toSave = this.state
+    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
+
+    console.log(csvString)
+    ipcRenderer.send('create-record', '/tmp/followapp_followUp', "'" + csvString + "'\r\n")
+    this.state = {}
+    // hashHistory.push(`/patient`)
   }
 
   render() {
@@ -32,13 +50,23 @@ export default class FollowUp extends Component {
       <div>
         <Paper style={ paperStyle } zDepth={1}>
           <div style={ contentStyle }>
-            <p>For those who has a labour epidural</p>
+            <p>For those who had labour epidural</p>
             How effective was it for you labour:
-            <Slider step={0.20} />
+            <Slider
+              step={0.20}
+              onChange={ this.handleChange.bind(this, 'during_labour') }
+            />
             How effective during delivery:
-            <Slider step={0.20} />
-            Where you satisfied with your pain reflief:
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <Slider
+              step={0.20}
+              onChange={ this.handleChange.bind(this, 'during_delivery') }
+            />
+            Were you satisfied with your pain relief?
+            <RadioButtonGroup
+              name="satisfied_with_pain_relief"
+              defaultSelected="not_light"
+              onChange={ this.handleChange.bind(this, 'satisfied_with_pain_relief') }
+            >
               <RadioButton
                 value="yes"
                 label="Yes"
@@ -51,7 +79,11 @@ export default class FollowUp extends Component {
               />
             </RadioButtonGroup><br />
             Did the epidural stop working at any point?<br />
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <RadioButtonGroup
+              name="epidural_stop_working"
+              defaultSelected="not_light"
+              onChange={ this.handleChange.bind(this, 'epidural_stop_working') }
+            >
               <RadioButton
                 value="yes"
                 label="Yes"
@@ -64,7 +96,11 @@ export default class FollowUp extends Component {
               />
             </RadioButtonGroup><br />
             Did the epidural 'fall out' at any point?<br />
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <RadioButtonGroup
+              name="shipSpeed"
+              defaultSelected="not_light"
+              onChange={ this.handleChange.bind(this, 'epidural_fall_out') }
+            >
               <RadioButton
                 value="yes"
                 label="Yes"
@@ -79,7 +115,7 @@ export default class FollowUp extends Component {
                 style={{ display: 'inline-block' }}
               />
             </RadioButtonGroup><br />
-            <RaisedButton label="Save Follow Up Assessment" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
+            <RaisedButton label="Save Follow Up Assessment" primary={true} style={{margin: 12}} onClick={() => this.handleClick() } />
           </div>
         </Paper>
       </div>

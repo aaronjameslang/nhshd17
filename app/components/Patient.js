@@ -29,7 +29,7 @@ export default class Patient extends Component {
   handleClick() {
     const toSave = this.state
     const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
-    ipcRenderer.send('create-record', '/tmp/followapp', "'" + csvString + "'\r\n")
+    ipcRenderer.send('create-record', '/tmp/followapp_patient', "'" + csvString + "'\r\n")
     this.state = {}
     hashHistory.push('/record_procedure')
   }
