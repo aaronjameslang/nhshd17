@@ -21,7 +21,7 @@ export default class FollowUp extends Component {
   render() {
     return (
       <div>
-        <Paper style={{padding: '20px'}} zDepth={1}>
+        <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '5px', paddingBottom: '20px'}} zDepth={1}>
           <p>For those who has a labour epidural</p>
           How effective was it for you labour:
           <Slider step={0.20} />

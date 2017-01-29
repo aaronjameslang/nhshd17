@@ -36,7 +36,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Paper style={{padding: '20px'}} zDepth={1}>
+        <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '20px', paddingBottom: '20px'}} zDepth={1}>
           <h2 style={{color: '#232C39'}}>Settings</h2>
           <TextField
             hintText="/tmp/followapp"
