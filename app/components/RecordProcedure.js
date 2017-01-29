@@ -48,6 +48,7 @@ export default class RecordProceudure extends Component {
       <div>
         <Paper style={ paperStyle } zDepth={1}>
           <div style={ contentStyle }>
+            <h2 style={{color: '#232C39'}}>Record Procedure</h2>
             <TextField
               hintText="Date (YYYY-MM-DD)"
               onChange={ this.handleChange.bind(this, 'date') }
