@@ -128,23 +128,23 @@ export default class FollowUp extends Component {
             Did you have any discomfort during your operation?
               <Slider
                   step={0.20}
-                  onChange={ this.handleChange.bind(this, 'discomfort') }
+                  onChange={ this.handleSlider.bind(this, 'discomfort') }
               />
               Worst pain felt after the operation?
               <Slider
                   step={0.20}
-                  onChange={ this.handleChange.bind(this, 'after_operation_pain') }
+                  onChange={ this.handleSlider.bind(this, 'after_operation_pain') }
               />
               Did you feel nauseous after the operation?"
               <Slider
                   step={0.20}
-                  onChange={ this.handleChange.bind(this, 'nausea') }
+                  onChange={ this.handleSlider.bind(this, 'nausea') }
               />
               <p>For all women.</p>
               Pruritus?
               <Slider
                   step={0.20}
-                  onChange={ this.handleChange.bind(this, 'pruritus') }
+                  onChange={ this.handleSlider.bind(this, 'pruritus') }
               />
               Signs of symptoms of PDPH?
               <RadioButtonGroup
