@@ -33,7 +33,7 @@ export default class FollowUp extends Component {
     console.log(csvString)
     ipcRenderer.send('create-record', '/tmp/followapp_followUp', "'" + csvString + "'\r\n")
     this.state = {}
-    // hashHistory.push(`/patient`)
+    hashHistory.push(`/patient`)
   }
 
   render() {
