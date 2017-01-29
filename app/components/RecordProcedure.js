@@ -10,12 +10,6 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import styles from './Home.css';
 import { ipcRenderer } from 'electron';
 
-console.log(window.innerHeight + 'px')
-
-const screenSize = {
-  height: window.innerHeight + 'px'
-}
-
 const paperStyle = {
   paddingLeft: '100px',
   paddingRight: '50px',

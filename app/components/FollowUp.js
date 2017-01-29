@@ -9,6 +9,7 @@ import Toggle from 'material-ui/Toggle';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import styles from './Home.css';
 import { ipcRenderer } from 'electron';
+import Checkbox from 'material-ui/Checkbox';
 
 const paperStyle = {
   paddingLeft: '100px',
@@ -50,9 +51,14 @@ export default class FollowUp extends Component {
       <div>
         <Paper style={ paperStyle } zDepth={1}>
           <div style={ contentStyle }>
-            <h2 style={{color: '#232C39'}}>Follow Up</h2>
+            <h2 style={{color: '#232C39'}}>Follow-up</h2>
+              <Checkbox
+                  label="Discharged without follow-up"
+                  style={styles.checkbox}
+                  onChange={ this.handleChange.bind(this, 'discharged_without-follow-up') }
+              />
             <p>For those who had labour epidural</p>
-            How effective was it for you labour:
+            How effective was it for your labour:
             <Slider
               step={0.20}
               onChange={ this.handleChange.bind(this, 'during_labour') }
@@ -65,7 +71,6 @@ export default class FollowUp extends Component {
             Were you satisfied with your pain relief?
             <RadioButtonGroup
               name="satisfied_with_pain_relief"
-              defaultSelected="not_light"
               onChange={ this.handleChange.bind(this, 'satisfied_with_pain_relief') }
             >
               <RadioButton
@@ -82,7 +87,6 @@ export default class FollowUp extends Component {
             Did the epidural stop working at any point?<br />
             <RadioButtonGroup
               name="epidural_stop_working"
-              defaultSelected="not_light"
               onChange={ this.handleChange.bind(this, 'epidural_stop_working') }
             >
               <RadioButton
@@ -98,8 +102,7 @@ export default class FollowUp extends Component {
             </RadioButtonGroup><br />
             Did the epidural 'fall out' at any point?<br />
             <RadioButtonGroup
-              name="shipSpeed"
-              defaultSelected="not_light"
+              name="epidural"
               onChange={ this.handleChange.bind(this, 'epidural_fall_out') }
             >
               <RadioButton
@@ -116,7 +119,65 @@ export default class FollowUp extends Component {
                 style={{ display: 'inline-block' }}
               />
             </RadioButtonGroup><br />
-            <RaisedButton label="Save Follow Up Assessment" primary={true} style={{margin: 12}} onClick={() => this.handleClick() } />
+            <p>For those who had an operative delivery</p>
+            Did you have any discomfort during your operation?
+              <Slider
+                  step={0.20}
+                  onChange={ this.handleChange.bind(this, 'discomfort') }
+              />
+              Worst pain felt after the operation?
+              <Slider
+                  step={0.20}
+                  onChange={ this.handleChange.bind(this, 'after_operation_pain') }
+              />
+              Did you feel nauseous after the operation?"
+              <Slider
+                  step={0.20}
+                  onChange={ this.handleChange.bind(this, 'nausea') }
+              />
+              <p>For all women.</p>
+              Pruritus?
+              <Slider
+                  step={0.20}
+                  onChange={ this.handleChange.bind(this, 'pruritus') }
+              />
+              Signs of symptoms of PDPH?
+              <RadioButtonGroup
+                  name="pdph"
+                  defaultSelected="not_light"
+                  onChange={ this.handleChange.bind(this, 'pdph') }>
+                  <RadioButton
+                      value="yes"
+                      label="Yes"
+                      style={{ display: 'inline-block' }}/>
+                  <RadioButton
+                  value="no"
+                  label="No"
+                  style={{ display: 'inline-block' }}/>
+                  <RadioButton
+                  value="possible"
+                  label="Possible"
+                  style={{ display: 'inline-block' }}/>
+              </RadioButtonGroup><br />
+              Weakness, numbness of legs?
+              <RadioButtonGroup
+                  name="leg_numbness_and_weakness"
+                  onChange={ this.handleChange.bind(this, 'leg_numbness_and_weakness') }>
+                  <RadioButton
+                      value="yes"
+                      label="Yes"
+                      style={{ display: 'inline-block' }}/>
+                  <RadioButton
+                      value="no"
+                      label="No"
+                      style={{ display: 'inline-block' }}/>
+              </RadioButtonGroup><br />
+              <Checkbox
+                  label="Follow-up complete"
+                  style={styles.checkbox}
+                  onChange={ this.handleChange.bind(this, 'follow-up_complete') }
+              />
+              <RaisedButton label="Save Follow Up Assessment" primary={true} style={{margin: 12}} onClick={() => this.handleClick() } />
           </div>
         </Paper>
       </div>
