@@ -19,10 +19,8 @@ export default class Patient extends Component {
 
   handleClick() {
     const toSave = this.state
-    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join(",")
-    console.log(csvString)
-    ipcRenderer.send('create-patient', '/tmp/followapp', csvString)
-    // hashHistory.push('/record_procedure')
+    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
+    ipcRenderer.send('create-record', '/tmp/followapp', "'" + csvString + "'\r\n")
   }
 
   handleChange(name, event) {
@@ -66,7 +64,7 @@ export default class Patient extends Component {
             label="Save Patient"
             primary={ true }
             style={{ margin: 12 }}
-            onClick={ this.handleClick.bind(this) }
+            onClick={() => this.handleClick()}
           />
         </Paper>
       </div>
