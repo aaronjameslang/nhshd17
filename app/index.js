@@ -7,12 +7,19 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
 import configureStore from './store/configureStore';
 import './app.global.css';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
+const muiTheme = getMuiTheme({
+    palette: {
+        primary1Color: '#005EB8',
+    },
+});
+
 render(
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={muiTheme}>
     <Provider store={store}>
       <Router history={history} routes={routes} />
     </Provider>
