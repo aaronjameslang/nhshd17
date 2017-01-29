@@ -41,7 +41,7 @@ export default class FollowUp extends Component {
       <div>
         <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '5px', paddingBottom: '20px'}} zDepth={1}>
           <p>For those who had labour epidural</p>
-          How effective was it for you labour:
+          How effective was it for your labour:
           <Slider
             step={0.20}
             onChange={ this.handleChange.bind(this, 'during_labour') }
@@ -51,7 +51,7 @@ export default class FollowUp extends Component {
             step={0.20}
             onChange={ this.handleChange.bind(this, 'during_delivery') }
           />
-          Where you satisfied with your pain reflief:
+          Where you satisfied with your pain relief:
           <RadioButtonGroup
             name="satisfied_with_pain_relief"
             defaultSelected="not_light"
