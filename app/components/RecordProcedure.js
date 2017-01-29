@@ -8,6 +8,7 @@ import Slider from 'material-ui/Slider';
 import Toggle from 'material-ui/Toggle';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import styles from './Home.css';
+import { ipcRenderer } from 'electron';
 
 const style = {
   margin: 12,
@@ -26,6 +27,10 @@ export default class RecordProceudure extends Component {
   }
 
   handleClick() {
+    const toSave = this.state
+    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
+    ipcRenderer.send('create-record', '/tmp/followapp_recordProcedure', "'" + csvString + "'\r\n")
+    this.state = {}
     hashHistory.push(`/follow_up`)
   }
 
