@@ -23,11 +23,11 @@ export default class FollowUp extends Component {
       <div>
         <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '5px', paddingBottom: '20px'}} zDepth={1}>
           <p>For those who had labour epidural</p>
-          How effective was it for you labour:
+          How effective was it for your labour:
           <Slider step={0.20} />
           How effective during delivery:
           <Slider step={0.20} />
-          Where you satisfied with your pain reflief:
+          Where you satisfied with your pain relief:
           <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
             <RadioButton
               value="yes"
