@@ -50,6 +50,7 @@ export default class FollowUp extends Component {
       <div>
         <Paper style={ paperStyle } zDepth={1}>
           <div style={ contentStyle }>
+            <h2 style={{color: '#232C39'}}>Follow Up</h2>
             <p>For those who had labour epidural</p>
             How effective was it for you labour:
             <Slider

@@ -45,6 +45,7 @@ export default class Patient extends Component {
       <div>
         <Paper style={ paperStyle } zDepth={1}>
           <div style={ contentStyle }>
+            <h2 style={{color: '#232C39'}}>Patient</h2>
             <TextField
               hintText="NHS Number"
               onChange={ this.handleChange.bind(this, 'nhs_number') }
