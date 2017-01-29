@@ -36,11 +36,15 @@ export default class FollowUp extends Component {
     this.setState(state)
   }
 
+  handleSlider(name, event, value) {
+    const state = this.state
+    state[name] = value
+    this.setState(state)
+  }
+
   handleClick() {
     const toSave = this.state
     const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
-
-    console.log(csvString)
     ipcRenderer.send('create-record', '/tmp/followapp_followUp', "'" + csvString + "'\r\n")
     this.state = {}
     hashHistory.push(`/patient`)
@@ -61,12 +65,13 @@ export default class FollowUp extends Component {
             How effective was it for your labour:
             <Slider
               step={0.20}
-              onChange={ this.handleChange.bind(this, 'during_labour') }
+              onChange={ this.handleSlider.bind(this, 'during_labour') }
+              name="during_labour"
             />
             How effective during delivery:
             <Slider
               step={0.20}
-              onChange={ this.handleChange.bind(this, 'during_delivery') }
+              onChange={ this.handleSlider.bind(this, 'during_delivery') }
             />
             Were you satisfied with your pain relief?
             <RadioButtonGroup
