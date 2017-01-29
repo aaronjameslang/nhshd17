@@ -14,7 +14,7 @@ const logoutIcon = <FontIcon className="material-icons">Logout</FontIcon>;
  */
 class FooterNav extends Component {
   handleClick() {
-    hashHistory.push('/')
+    hashHistory.push('/counter')
   }
 
   render() {

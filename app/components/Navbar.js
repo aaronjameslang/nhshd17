@@ -14,7 +14,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <AppBar
-        title="Fancy App Name Goes Here"
+        title="FollowApp"
         iconElementLeft={ <LoggedInMenu /> }
       />
     );

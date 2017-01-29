@@ -11,25 +11,41 @@ const style = {
 }
 
 export default class Home extends Component {
-  handleClick() {
-    hashHistory.push(`/patient`)
+  constructor() {
+    super();
+    this.state = {
+      filepath: '/tmp/followapp',
+    }
+  };
+
+  props: {
+    saveFile: () => void,
+  };
+
+  handleChange(name, event) {
+    const state = this.state
+    state[name] = event.target.value
+    this.setState(state);
+  };
+
+  handleClick(e) {
+    console.log(this.state)
+    // hashHistory.push(`/patient`)
   }
 
   render() {
     return (
       <div>
         <Paper style={{padding: '20px'}} zDepth={1}>
-          <h2 style={{color: '#232C39'}}>Login</h2>
+          <h2 style={{color: '#232C39'}}>Settings</h2>
           <TextField
-            hintText="Server Username"
-            floatingLabelText="Server Username"
+            hintText="/tmp/followapp"
+            floatingLabelText="File Location"
+            name="filepath"
+            value={ this.state.filepath }
+            onChange={ this.handleChange.bind(this, 'filepath') }
           /><br />
-          <TextField
-            hintText="Password"
-            floatingLabelText="Password"
-            type="password"
-          /><br />
-          <RaisedButton label="Login" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
+          <RaisedButton label="Save" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
         </Paper>
       </div>
     );
