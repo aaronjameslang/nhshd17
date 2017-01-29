@@ -177,6 +177,42 @@ export default class FollowUp extends Component {
                       label="No"
                       style={{ display: 'inline-block' }}/>
               </RadioButtonGroup><br />
+              Are you happy with the Anaesthetic Services that you received?
+              <RadioButtonGroup
+                  name="happy_with_services"
+                  onChange={ this.handleChange.bind(this, 'happy_with_services') }>
+                  <RadioButton
+                      value="yes"
+                      label="Yes"
+                      style={{ display: 'inline-block' }}/>
+                  <RadioButton
+                      value="no"
+                      label="No"
+                      style={{ display: 'inline-block' }}/>
+              </RadioButtonGroup><br />
+              Would you recommend the Anaesthetic Service to your friends/family?
+              <RadioButtonGroup
+                  name="would_recommend"
+                  onChange={ this.handleChange.bind(this, 'would_recommend') }>
+                  <RadioButton
+                      value="yes"
+                      label="Yes"
+                      style={{ display: 'inline-block' }}/>
+                  <RadioButton
+                      value="no"
+                      label="No"
+                      style={{ display: 'inline-block' }}/>
+              </RadioButtonGroup><br />
+              <TextField
+                  hintText="Name of anaesthetist completing follow-up"
+                  onChange={ this.handleChange.bind(this, 'follow-up_anaesthetist') }
+              /><br />
+              <TextField
+                  hintText="Notes"
+                  onChange={ this.handleChange.bind(this, 'follow-up_anaesthetist') }
+                  multiLine={true}
+                  rows={1}
+              /><br />
               <Checkbox
                   label="Follow-up complete"
                   style={styles.checkbox}
