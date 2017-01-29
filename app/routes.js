@@ -6,6 +6,7 @@ import HomePage from './containers/HomePage';
 import PatientPage from './containers/PatientPage';
 import RecordProcedurePage from './containers/RecordProcedurePage';
 import FollowUpPage from './containers/FollowUpPage';
+import CounterPage from './containers/CounterPage';
 
 
 export default (
