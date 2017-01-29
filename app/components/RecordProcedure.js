@@ -9,8 +9,23 @@ import Toggle from 'material-ui/Toggle';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import styles from './Home.css';
 
-const style = {
-  margin: 12,
+console.log(window.innerHeight + 'px')
+
+const screenSize = {
+  height: window.innerHeight + 'px'
+}
+
+const paperStyle = {
+  paddingLeft: '100px',
+  paddingRight: '50px',
+  paddingTop: '20px',
+  paddingBottom: '20px',
+  height: '80vh',
+  overflow: 'scroll',
+}
+
+const contentStyle = {
+  width: '50%',
 }
 
 export default class RecordProceudure extends Component {
@@ -32,8 +47,8 @@ export default class RecordProceudure extends Component {
   render() {
     return (
       <div>
-        <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '20px', paddingBottom: '20px', height: '500px', overflow: 'scroll'}} zDepth={1}>
-          <div style={{width: '50%'}}>
+        <Paper style={ paperStyle } zDepth={1}>
+          <div style={ contentStyle }>
             <TextField
               hintText="Date (YYYY-MM-DD)"
               onChange={ this.handleChange.bind(this, 'date') }

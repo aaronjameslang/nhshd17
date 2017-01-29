@@ -6,8 +6,17 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import styles from './Home.css';
 
-const style = {
-  margin: 12,
+const paperStyle = {
+  paddingLeft: '100px',
+  paddingRight: '50px',
+  paddingTop: '20px',
+  paddingBottom: '20px',
+  height: '80vh',
+  overflow: 'scroll',
+}
+
+const contentStyle = {
+  width: '50%',
 }
 
 export default class Home extends Component {
@@ -36,16 +45,18 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '20px', paddingBottom: '20px'}} zDepth={1}>
-          <h2 style={{color: '#232C39'}}>Settings</h2>
-          <TextField
-            hintText="/tmp/followapp"
-            floatingLabelText="File Location"
-            name="filepath"
-            value={ this.state.filepath }
-            onChange={ this.handleChange.bind(this, 'filepath') }
-          /><br />
-          <RaisedButton label="Save" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
+        <Paper style={ paperStyle } zDepth={1}>
+          <div style={ contentStyle }>
+            <h2 style={{color: '#232C39'}}>Settings</h2>
+            <TextField
+              hintText="/tmp/followapp"
+              floatingLabelText="File Location"
+              name="filepath"
+              value={ this.state.filepath }
+              onChange={ this.handleChange.bind(this, 'filepath') }
+            /><br />
+            <RaisedButton label="Save" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
+          </div>
         </Paper>
       </div>
     );
