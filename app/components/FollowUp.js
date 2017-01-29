@@ -22,7 +22,7 @@ export default class FollowUp extends Component {
     return (
       <div>
         <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '5px', paddingBottom: '20px'}} zDepth={1}>
-          <p>For those who has a labour epidural</p>
+          <p>For those who had labour epidural</p>
           How effective was it for you labour:
           <Slider step={0.20} />
           How effective during delivery:

@@ -42,7 +42,15 @@ export default class RecordProceudure extends Component {
               hintText="Time (HH:MM)"
               onChange={ this.handleChange.bind(this, 'time') }
             /><br />
-            <p>Anthstetic Given:</p>
+            <TextField
+              hintText="Anaesthetist 1"
+              onChange={ this.handleChange.bind(this, 'anaesthetist_1') }
+            /><br />
+            <TextField
+              hintText="Anaesthetist 2"
+              onChange={ this.handleChange.bind(this, 'anaesthetist_2') }
+            /><br />
+            <p>Anaesthetic Given:</p>
             <Toggle
               label="GA"
               onChange={ this.handleChange.bind(this, 'GA') }
@@ -52,21 +60,26 @@ export default class RecordProceudure extends Component {
               onChange={ this.handleChange.bind(this, 'Spinal') }
             />
             <Toggle
-              label="CES"
-              onChange={ this.handleChange.bind(this, 'CES') }
+              label="CSE"
+              onChange={ this.handleChange.bind(this, 'CSE') }
             />
             <Toggle
               label="Epidural / Top Up"
               onChange={ this.handleChange.bind(this, 'Epidural') }
             />
-            <p>Procedure:</p>
+            <p>Procedure Indication:</p>
             <Toggle
               label="Pain Relief"
               onChange={ this.handleChange.bind(this, 'PainRelief') }
             />
             <Toggle
-              label="CS"
-              onChange={ this.handleChange.bind(this, 'CS') }
+              label="LSCS"
+              onChange={ this.handleChange.bind(this, 'LCCS') }
+            />
+            <TextField
+              label="Grade"
+              hintText="1, 2, 3, 4"
+              onChange={ this.handleChange.bind(this, 'LSCS_grade') }
             />
             <Toggle
               label="Instrumental Delivery"
@@ -75,10 +88,6 @@ export default class RecordProceudure extends Component {
             <Toggle
               label="Other"
               onChange={ this.handleChange.bind(this, 'Other') }
-            />
-            <Toggle
-              label="Paraesthesia"
-              onChange={ this.handleChange.bind(this, 'Paraesthesia') }
             />
             <RaisedButton
               label="Record Procedure"
