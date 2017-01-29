@@ -21,43 +21,45 @@ export default class FollowUp extends Component {
   render() {
     return (
       <div>
-        <Paper style={{padding: '20px'}} zDepth={1}>
-          <TextField
-            hintText="Date (YYYY-MM-DD)"
-          /><br />
-          <TextField
-            hintText="Time (HH-MM)"
-          /><br />
-          <p>Anthstetic Given:</p>
-          <Toggle
-            label="GA"
-          />
-          <Toggle
-            label="Spinal"
-          />
-          <Toggle
-            label="CES"
-          />
-          <Toggle
-            label="Epidural / Top Up"
-          />
-          <p>Procedure:</p>
-          <Toggle
-            label="Pain Relief"
-          />
-          <Toggle
-            label="CS"
-          />
-          <Toggle
-            label="Instrumental Delivery"
-          />
-          <Toggle
-            label="Other"
-          />
-          <Toggle
-            label="Paraesthesia"
-          />
-          <RaisedButton label="Record Procedure" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
+        <Paper style={{paddingLeft: '100px', paddingRight: '50px', paddingTop: '20px', paddingBottom: '20px'}} zDepth={1}>
+          <div style={{width: '50%'}}>
+            <TextField
+              hintText="Date (YYYY-MM-DD)"
+            /><br />
+            <TextField
+              hintText="Time (HH-MM)"
+            /><br />
+            <p>Anthstetic Given:</p>
+            <Toggle
+              label="GA"
+            />
+            <Toggle
+              label="Spinal"
+            />
+            <Toggle
+              label="CES"
+            />
+            <Toggle
+              label="Epidural / Top Up"
+            />
+            <p>Procedure:</p>
+            <Toggle
+              label="Pain Relief"
+            />
+            <Toggle
+              label="CS"
+            />
+            <Toggle
+              label="Instrumental Delivery"
+            />
+            <Toggle
+              label="Other"
+            />
+            <Toggle
+              label="Paraesthesia"
+            />
+            <RaisedButton label="Record Procedure" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
+          </div>
         </Paper>
       </div>
     );
