@@ -104,6 +104,12 @@ export default class RecordProceudure extends Component {
               label="Other"
               onChange={ this.handleChange.bind(this, 'Other') }
             />
+            <TextField
+                hintText="Notes"
+                onChange={ this.handleChange.bind(this, 'follow-up_anaesthetist') }
+                multiLine={true}
+                rows={1}
+            /><br />
             <RaisedButton
               label="Record Procedure"
               primary={true}
