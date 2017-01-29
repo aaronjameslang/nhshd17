@@ -16,6 +16,5 @@ export default (
     <Route path="/patient" component={PatientPage} />
     <Route path="/record_procedure" component={RecordProcedurePage} />
     <Route path="/follow_up" component={FollowUpPage} />
-    <Route path="/counter" component={CounterPage} />
   </Route>
 );
