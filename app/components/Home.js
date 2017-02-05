@@ -20,29 +20,38 @@ const contentStyle = {
 }
 
 export default class Home extends Component {
+  props: {
+    getFileLocation: () => void,
+    saveFilePath: () => void,
+    filePath: string
+  };
+
   constructor() {
     super();
     this.state = {
-      filepath: '/tmp/followapp',
+      filePath: ""
     }
-  };
-
-  props: {
-    saveFile: () => void,
   };
 
   handleChange(name, event) {
     const state = this.state
     state[name] = event.target.value
-    this.setState(state);
+    this.setState(state)
   };
 
   handleClick(e) {
-    console.log(this.state)
-    // hashHistory.push(`/patient`)
+    const { saveFilePath } = this.props
+    saveFilePath(this.state.filePath)
   }
 
   render() {
+    const { getFilePath } = this.props
+    const filePath = getFilePath()
+
+    if (this.state.filePath == '') {
+      this.state.filePath = filePath
+    }
+
     return (
       <div>
         <Paper style={ paperStyle } zDepth={1}>
@@ -51,9 +60,9 @@ export default class Home extends Component {
             <TextField
               hintText="/tmp/followapp"
               floatingLabelText="File Location"
-              name="filepath"
-              value={ this.state.filepath }
-              onChange={ this.handleChange.bind(this, 'filepath') }
+              name="filePath"
+              value={ this.state.filePath }
+              onChange={ this.handleChange.bind(this, 'filePath') }
             /><br />
             <RaisedButton label="Save" primary={true} style={{margin: 12}} onClick={ this.handleClick.bind(this) } />
           </div>

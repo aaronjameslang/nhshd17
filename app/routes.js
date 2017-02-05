@@ -11,7 +11,7 @@ import CounterPage from './containers/CounterPage';
 
 export default (
   <Route path="/" component={App} history={hashHistory}>
-    <IndexRoute component={HomePage} />
+    <IndexRoute component={CounterPage} />
     <Route path="/login" component={HomePage} />
     <Route path="/patient" component={PatientPage} />
     <Route path="/record_procedure" component={RecordProcedurePage} />
