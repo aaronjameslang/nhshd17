@@ -25,9 +25,34 @@ const contentStyle = {
 }
 
 export default class FollowUp extends Component {
+  props: {
+    getFilePath: () => void,
+    saveFilePath: () => void,
+    filePath: string
+  };
+
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      "id": "",
+      "discharged_without-follow-up": "",
+      "during_labour": "",
+      "during_delivery": "",
+      "satisfied_with_pain_relief": "",
+      "epidural_stop_working": "",
+      "epidural_fall_out": "",
+      "discomfort": "",
+      "after_operation_pain": "",
+      "nausea": "",
+      "pruritus": "",
+      "pdph": "",
+      "leg_numbness_and_weakness": "",
+      "happy_with_services": "",
+      "would_recommend": "",
+      "follow-up_anaesthetist": "",
+      "notes": "",
+      "follow-up_complete": "",
+    }
   }
 
   handleChange(name, event) {
@@ -43,9 +68,10 @@ export default class FollowUp extends Component {
   }
 
   handleClick() {
+    const { getFilePath } = this.props
+    const filePath = getFilePath() + 'FollowUp.csv'
     const toSave = this.state
-    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
-    ipcRenderer.send('create-record', '/tmp/followapp_followUp', "'" + csvString + "'\r\n")
+    ipcRenderer.send('create-record', filePath, toSave)
     this.state = {}
     hashHistory.push(`/patient`)
   }
@@ -56,11 +82,11 @@ export default class FollowUp extends Component {
         <Paper style={ paperStyle } zDepth={1}>
           <div style={ contentStyle }>
             <h2 style={{color: '#232C39'}}>Follow-up</h2>
-              <Checkbox
-                  label="Discharged without follow-up"
-                  style={styles.checkbox}
-                  onChange={ this.handleChange.bind(this, 'discharged_without-follow-up') }
-              />
+            <Checkbox
+                label="Discharged without follow-up"
+                style={styles.checkbox}
+                onChange={ this.handleChange.bind(this, 'discharged_without-follow-up') }
+            />
             <p>For those who had labour epidural</p>
             How effective was it for your labour:
             <Slider
@@ -209,7 +235,7 @@ export default class FollowUp extends Component {
               /><br />
               <TextField
                   hintText="Notes"
-                  onChange={ this.handleChange.bind(this, 'follow-up_anaesthetist') }
+                  onChange={ this.handleChange.bind(this, 'notes') }
                   multiLine={true}
                   rows={1}
               /><br />

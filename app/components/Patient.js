@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import styles from './Home.css';
 import { ipcRenderer } from 'electron';
+import uuid from 'uuid/v4';
 
 const paperStyle = {
   paddingLeft: '100px',
@@ -21,15 +22,30 @@ const contentStyle = {
 }
 
 export default class Patient extends Component {
+  props: {
+    getFilePath: () => void,
+    saveFilePath: () => void,
+    filePath: string
+  };
+
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      "id": uuid(),
+      "nhs_number": "",
+      "first_name": "",
+      "second_name": "",
+      "address": "",
+      "postcode": "",
+      "dob": "",
+    }
   }
 
   handleClick() {
+    const { getFilePath } = this.props
+    const filePath = getFilePath() + 'Patient.csv'
     const toSave = this.state
-    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
-    ipcRenderer.send('create-record', '/tmp/followapp_patient', "'" + csvString + "'\r\n")
+    ipcRenderer.send('create-record', filePath, toSave)
     this.state = {}
     hashHistory.push('/record_procedure')
   }

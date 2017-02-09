@@ -1,13 +1,18 @@
 // @flow
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import RecordProcedure from '../components/RecordProcedure';
+import * as FileLocationActions from '../actions/fileLocation';
 
-export default class RecordProcedureProcedurePage extends Component {
-  render() {
-    return (
-      <div>
-        <RecordProcedure />
-      </div>
-    );
+function mapStateToProps(state) {
+  return {
+    filePath: state.filePath
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(FileLocationActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecordProcedure)

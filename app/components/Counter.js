@@ -45,7 +45,7 @@ class Counter extends Component {
           </Link>
         </div>
         <div className={`counter ${styles.counter}`}>
-          {counter}
+          TEST {counter}
         </div>
         <div className={styles.btnGroup}>
           <button className={styles.btn} onClick={increment}>
