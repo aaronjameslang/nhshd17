@@ -277,8 +277,14 @@ app.on('ready', async () => {
   }
 });
 
-ipcMain.on('create-record', (event, filepath, string) => {
-  fs.appendFile(filepath, string, err => {
+ipcMain.on('create-record', (event, filepath, content) => {
+  if (!fs.existsSync(filepath)) {
+    const headers = Object.keys(content).map(function(k){return k}).join("','")
+    fs.appendFileSync(filepath, "'" + headers + "'\r\n")
+  }
+
+  const data = Object.keys(content).map(function(k){return content[k]}).join("','")
+  fs.appendFile(filepath, "'" + data + "'\r\n", err => {
     if (err) {
       event.sender.send('error', err)
       return
@@ -290,5 +296,5 @@ ipcMain.on('create-record', (event, filepath, string) => {
       }
       event.sender.send('all-records', records)
     })
-  });
+  })
 })

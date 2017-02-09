@@ -1,13 +1,18 @@
 // @flow
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import FollowUp from '../components/FollowUp';
+import * as FileLocationActions from '../actions/fileLocation';
 
-export default class FollowUpPage extends Component {
-  render() {
-    return (
-      <div>
-        <FollowUp />
-      </div>
-    );
+function mapStateToProps(state) {
+  return {
+    filePath: state.filePath
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(FileLocationActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FollowUp)

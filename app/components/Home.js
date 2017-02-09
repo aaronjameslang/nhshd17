@@ -21,7 +21,7 @@ const contentStyle = {
 
 export default class Home extends Component {
   props: {
-    getFileLocation: () => void,
+    getFilePath: () => void,
     saveFilePath: () => void,
     filePath: string
   };

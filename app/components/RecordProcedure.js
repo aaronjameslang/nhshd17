@@ -24,9 +24,31 @@ const contentStyle = {
 }
 
 export default class RecordProceudure extends Component {
+  props: {
+    getFilePath: () => void,
+    saveFilePath: () => void,
+    filePath: string
+  };
+
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      "id": "",
+      "date": "",
+      "time": "",
+      "anaesthetist_1": "",
+      "anaesthetist_2": "",
+      "GA": "",
+      "Spinal": "",
+      "CSE": "",
+      "Epidural": "",
+      "PainRelief": "",
+      "LCCS": "",
+      "LSCS_grade": "",
+      "InstrumentalDelivery": "",
+      "Other": "",
+      "follow-up_anaesthetist": "",
+    }
   }
 
   handleChange(name, event) {
@@ -36,9 +58,10 @@ export default class RecordProceudure extends Component {
   }
 
   handleClick() {
+    const { getFilePath } = this.props
+    const filePath = getFilePath() + 'RecordProceudure.csv'
     const toSave = this.state
-    const csvString = Object.keys(toSave).map(function(k){return toSave[k]}).join("','")
-    ipcRenderer.send('create-record', '/tmp/followapp_recordProcedure', "'" + csvString + "'\r\n")
+    ipcRenderer.send('create-record', filePath, toSave)
     this.state = {}
     hashHistory.push(`/follow_up`)
   }

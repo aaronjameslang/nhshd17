@@ -6,12 +6,10 @@ import HomePage from './containers/HomePage';
 import PatientPage from './containers/PatientPage';
 import RecordProcedurePage from './containers/RecordProcedurePage';
 import FollowUpPage from './containers/FollowUpPage';
-import CounterPage from './containers/CounterPage';
-
 
 export default (
   <Route path="/" component={App} history={hashHistory}>
-    <IndexRoute component={CounterPage} />
+    <IndexRoute component={HomePage} />
     <Route path="/login" component={HomePage} />
     <Route path="/patient" component={PatientPage} />
     <Route path="/record_procedure" component={RecordProcedurePage} />
