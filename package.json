@@ -25,7 +25,10 @@
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
     "package-all": "npm run build && build -mwl",
-    "cleanup": "mop -v"
+    "cleanup": "mop -v",
+    "package": "electron-packager ./ FollowApp --all --out ~/Desktop/FollowApp --version 0.1.0 --overwrite",
+    "package-mac": "electron-packager ./ FollowApp --platform=darwin --arch=x64 --out ~/Desktop/FollowApp --overwrite",
+    "package-windows": "electron-packager ./ FollowApp --platform=win32 --arch=x64 --out ~/Desktop/FollowApp --overwrite; electron-packager ./ FollowApp --platform=win32 --arch=ia32 --out ~/Desktop/FollowApp --overwrite"
   },
   "browserslist": "electron 1.4",
   "build": {
@@ -123,6 +126,7 @@
     "electron": "^1.4.15",
     "electron-builder": "^11.4.4",
     "electron-devtools-installer": "^2.0.1",
+    "electron-packager": "^8.5.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.14.0",
     "eslint-config-airbnb": "^14.0.0",
