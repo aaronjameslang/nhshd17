@@ -29,7 +29,7 @@ export default class NavTabs extends React.Component {
   handleClick(id) {
     var page = ''
     if (id === 0) {
-      page = 'login'
+      page = 'settings'
     } else if (id === 1) {
       page = 'patient'
     } else if (id === 2) {

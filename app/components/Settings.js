@@ -19,7 +19,7 @@ const contentStyle = {
   width: '50%',
 }
 
-export default class Home extends Component {
+export default class Settings extends Component {
   props: {
     getFilePath: () => void,
     saveFilePath: () => void,
