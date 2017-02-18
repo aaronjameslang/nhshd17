@@ -1,8 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
-
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -17,6 +16,7 @@ export default class Navbar extends Component {
         title="FollowApp"
         iconElementLeft={ <LoggedInMenu /> }
         titleStyle={{'fontSize': '40px', 'textAlign': 'center'}}
+        onClick={() => hashHistory.push('/settings')}
       />
     );
   }
