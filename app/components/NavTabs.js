@@ -29,7 +29,7 @@ export default class NavTabs extends React.Component {
   handleClick(id) {
     var page = ''
     if (id === 0) {
-      page = 'settings'
+      page = 'patients'
     } else if (id === 1) {
       page = 'patient'
     } else if (id === 2) {
@@ -47,7 +47,7 @@ export default class NavTabs extends React.Component {
         value={this.state.value}
         onChange={this.handleChange}
       >
-        <Tab label="Settings" value="settings" onClick={ this.handleClick.bind(this, 0) } />
+        <Tab label="Load Patient" value="patients" onClick={ this.handleClick.bind(this, 0) } />
         <Tab label="Patient" value="patient" onClick={ this.handleClick.bind(this, 1) } />
         <Tab label="Record Procedure" value="record_procedure" onClick={ this.handleClick.bind(this, 2) } />
         <Tab label="Follow Up" value="follow_up" onClick={ this.handleClick.bind(this, 3) } />
