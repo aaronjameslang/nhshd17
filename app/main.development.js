@@ -298,3 +298,30 @@ ipcMain.on('create-record', (event, filepath, content) => {
     })
   })
 })
+
+
+ipcMain.on('load_from_file', (event, filepath, content) => {
+  if (fs.existsSync(filepath)) {
+    fs.readFile(filepath, 'utf8', (err, records) => {
+      if (err) {
+        return
+      }
+
+      const splitRecords = records.split("\r\n")
+      const headers = splitRecords.shift().split(",").map((e) => e.substr(1).slice(0, -1))
+
+      splitRecords.pop() // remove trailing new line
+
+      const newRecords = splitRecords.map((row) => {
+        var splitRow = row.split(",")
+        var newRow = {}
+        for (var i = 0; i < splitRow.length; i++) {
+          newRow[headers[i]] = splitRow[i].substr(1).slice(0, -1)
+        }
+        return newRow
+      })
+
+      event.sender.send('file_contents', newRecords)
+    })
+  }
+})
